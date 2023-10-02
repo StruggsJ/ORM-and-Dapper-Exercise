@@ -19,11 +19,11 @@ namespace ORM_Dapper
 
             var departmentRepo = new DapperDepartmentRepository(conn);
 
-            
 
+            #region Department Section (Ex1)
             //Insert a department.
 
-            departmentRepo.InsertDepartment("Food/Beverages"); //Duplicate
+            departmentRepo.InsertDepartment("Food/Beverages"); //Duplicate /w ID 7
 
 
             //Get's all departments and prints out Department's name and ID number
@@ -37,6 +37,79 @@ namespace ORM_Dapper
                 Console.WriteLine();
                 Console.WriteLine();
             }
+            #endregion
+
+            #region Product Section (Ex2)
+            var productRepository = new DapperProductRepository(conn);
+            var products = productRepository.GetAllProducts();
+
+            /*
+            foreach (var product in products)
+            {
+                Console.WriteLine(product.ProductID);
+                Console.WriteLine(product.Name);
+                Console.WriteLine(product.Price);
+                Console.WriteLine(product.CategoryID);
+                Console.WriteLine(product.OnSale);
+                Console.WriteLine(product.StockLevel);
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+
+            Console.WriteLine("=============");
+            Console.WriteLine("=============");
+            */
+            #endregion
+
+            #region UpdateProduct (B1)
+
+            /* 
+            var productToUpdate = productRepository.GetProduct(940); //ID of our sample product, Gold Peak Example Sweet Tea
+
+            productToUpdate.Name = "Gold Peak Sweet Tea"; //Removed Example in the name.
+            productToUpdate.Price = 1.99; // From 3.99 to 1.99
+            productToUpdate.CategoryID = 10; //Unchanged
+            productToUpdate.OnSale = true; //Set onsale flag from false to true.
+            productToUpdate.StockLevel = 50; //From 100 to 50;
+
+            productRepository.UpdateProduct(productToUpdate);
+
+            products = productRepository.GetAllProducts(); //Call method again and reassign to products to retrieved updated product.
+            
+            Console.WriteLine("Updated Product List:");
+
+            
+            foreach (var product in products)
+            {
+                Console.WriteLine(product.ProductID);
+                Console.WriteLine(product.Name);
+                Console.WriteLine(product.Price);
+                Console.WriteLine(product.CategoryID);
+                Console.WriteLine(product.OnSale);
+                Console.WriteLine(product.StockLevel);
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+            */
+            #endregion
+
+            #region DeleteProduct (B2)
+
+            productRepository.DeleteProduct(940); //Deleting our example product.
+            products = productRepository.GetAllProducts();
+
+            foreach (var product in products)
+            {
+                Console.WriteLine(product.ProductID);
+                Console.WriteLine(product.Name);
+                Console.WriteLine(product.Price);
+                Console.WriteLine(product.CategoryID);
+                Console.WriteLine(product.OnSale);
+                Console.WriteLine(product.StockLevel);
+                Console.WriteLine();
+                Console.WriteLine();
+            }
+            #endregion
         }
     }
 }
