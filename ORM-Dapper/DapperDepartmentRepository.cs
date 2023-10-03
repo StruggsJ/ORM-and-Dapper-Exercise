@@ -25,7 +25,7 @@ namespace ORM_Dapper
         public void InsertDepartment(string name)
         {
             _conn.Execute("INSERT INTO departments (name) VALUES (@name)",
-                new {name});
+                new {name = name});
 
 
         }

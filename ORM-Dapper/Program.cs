@@ -95,7 +95,7 @@ namespace ORM_Dapper
 
             #region DeleteProduct (B2)
 
-            productRepository.DeleteProduct(940); //Deleting our example product.
+            productRepository.DeleteProduct(887); //Deleting our example product.
             products = productRepository.GetAllProducts();
 
             foreach (var product in products)
